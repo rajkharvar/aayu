@@ -42,7 +42,7 @@ export default {
     }
   },
   updated () {
-    this.addValue('vdatetime-input', 'Select birthdate and Time')
+    this.addValue('vdatetime-input', 'Select Birthdate and Time')
   },
   methods: {
     setAge () {
