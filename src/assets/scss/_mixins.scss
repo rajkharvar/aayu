@@ -1,0 +1,16 @@
+@mixin toggleColor () {
+  background: $bg1;
+  color: $bg;
+  border-color: $bg;
+}
+
+@mixin styleit () {
+  width: 300px;
+  height: 40px;
+  border: 2px solid $bg1;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: $bg;
+  color: $bg1;
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+.dark .vdatetime-popup__header,
+.dark .vdatetime-calendar__month__day--selected > span > span,
+.dark .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: $bg;
+  color: $bg1;
+}
+
+.light .vdatetime-popup__header,
+.light .vdatetime-calendar__month__day--selected > span > span,
+.light .vdatetime-calendar__month__day--selected:hover > span > span {
+  @include toggleColor();
+}
+
+.vdatetime {
+  .vdatetime-input {
+    @include styleit();
+
+    &::placeholder {
+      color: $bg1;
+    }
+
+  }
+}
+

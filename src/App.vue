@@ -1,28 +1,76 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-if="!ageSet">
+      <datetime
+        v-model="date"
+        type="datetime"
+        title="Select you birthdate and birthtime"
+        hidden-name="Select you birthdate and birthtime"
+        input-id='test'
+        :class="darkMode ? 'dark' : 'light'"
+      ></datetime>
+      <button @click="setAge">Get AGE</button>
+    </div>
+    <agemodel v-if="ageSet" :date="date" :ageSet="ageSet" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { Datetime } from 'vue-datetime'
+import AgeModel from '@/components/AgeModel'
+
+import dom from '@/mixins/dom'
 
 export default {
+  mixins: [dom],
   name: 'App',
   components: {
-    HelloWorld
+    datetime: Datetime,
+    agemodel: AgeModel
+  },
+  data () {
+    return {
+      date: null,
+      ageSet: false,
+      darkMode: window.matchMedia('(prefers-color-scheme:dark)').matches
+    }
+  },
+  created () {
+    if (window.localStorage.getItem('yourage')) {
+      this.date = window.localStorage.getItem('yourage')
+      this.ageSet = true
+    }
+  },
+  updated () {
+    this.addValue('vdatetime-input', 'Select birthdate and Time')
+  },
+  methods: {
+    setAge () {
+      if (!this.date) {
+        return
+      }
+      // window.localStorage.setItem('yourage', this.date)
+      this.ageSet = true
+    }
   }
 }
 </script>
 
 <style lang="scss">
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Fira Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
