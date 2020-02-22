@@ -49,7 +49,7 @@ export default {
       if (!this.date) {
         return
       }
-      // window.localStorage.setItem('yourage', this.date)
+      window.localStorage.setItem('yourage', this.date)
       this.ageSet = true
     }
   }
