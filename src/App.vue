@@ -12,6 +12,7 @@
       <button @click="setAge">Get AGE</button>
     </div>
     <agemodel v-if="ageSet" :date="date" :ageSet="ageSet" />
+    <made-with-love by='Raj Kharvar' link='https://github.com/rajkharvar' />
   </div>
 </template>
 
