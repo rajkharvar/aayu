@@ -1,5 +1,6 @@
 <template>
   <div class="age-model">
+    <vue-headful :title="title" />
     <div class="age-container">
       <h1>AGE</h1>
       <div class="test">
@@ -24,7 +25,8 @@ export default {
       currentTimetamp: +new Date() / 1000,
       age: 0,
       fixedDeno: 3600 * 24 * 365 * 1000,
-      testAge: 0
+      testAge: 0,
+      title: ''
     }
   },
   created () {
@@ -36,6 +38,7 @@ export default {
         (self.$data.currentTimetamp - self.$data.birthDateTimestamp) /
         self.$data.fixedDeno
       self.$data.age = Number(self.$data.age).toFixed(10)
+      self.$data.title = `You are ${Math.floor(self.$data.age)} years old`
     }, 100)
   }
   // computed: {
